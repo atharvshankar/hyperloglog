@@ -2,10 +2,10 @@
  🔢 
  ### My HyperLogLog and Presto-style HyperLogLog implementation  
 - Source code:
-  - [`src/primer/hyperloglog.cpp`](src/primer/hyperloglog.cpp)  
-  - [`src/include/primer/hyperloglog.h`](src/include/primer/hyperloglog.h)  
   - [`src/primer/hyperloglogpresto.cpp`](src/primer/hyperloglog_presto.cpp)  
   - [`src/include/primer/hyperloglogpresto.h`](src/include/primer/hyperloglog_presto.h)  
+  - [`src/primer/hyperloglog.cpp`](src/primer/hyperloglog.cpp)  
+  - [`src/include/primer/hyperloglog.h`](src/include/primer/hyperloglog.h)  
 
 ---
 
