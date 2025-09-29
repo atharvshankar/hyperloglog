@@ -1,9 +1,17 @@
-<img src="logo/bustub-whiteborder.svg" alt="BusTub Logo" height="200">
 
+ 🔢 
+ ### My HyperLogLog and Presto-style HyperLogLog implementation  
+- Source code:
+  - [`src/primer/hyperloglog.cpp`](src/primer/hyperloglog.cpp)  
+  - [`src/include/primer/hyperloglog.h`](src/include/primer/hyperloglog.h)  
+  - [`src/primer/hyperloglogpresto.cpp`](src/primer/hyperloglogpresto.cpp)  
+  - [`src/include/primer/hyperloglogpresto.h`](src/include/primer/hyperloglogpresto.h)  
 
-My hyperloglog and presto hyperloglog implementation can be found at src/primer/hyperloglogpresto.cpp and src/include/primer/hyperloglogpresto.h
+---
 
-Below is an excerpt of the readme.md from the CMU DB course 15445's repo which inspired me to implement Hyperloglog. Feel free to check out Prof.Pavlo's Database systems course on YouTube. 
+📖 This project was inspired by the [CMU 15-445 Database Systems](https://github.com/cmu-db/bustub) course.  
+Special thanks to **Prof. Andy Pavlo** — his lectures on [Database Systems (YouTube)](https://www.youtube.com/watch?v=otE2WvX3XdQ&list=PLSE8ODhjZXjYDBpQnSymaectKjxCy6BYq&index=1) motivated me to implement a Presto-style HyperLogLog for scalable cardinality estimation.  
+
 -----------------
 
 
