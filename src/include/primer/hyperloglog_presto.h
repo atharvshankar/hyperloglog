@@ -28,7 +28,6 @@ class HyperLogLogPresto {
    * hence SHOULD NOT be deleted. It's essential to use the dense_bucket_
    * data structure.
    */
-
   /** @brief Constant for HLL. */
   static constexpr double CONSTANT = 0.79402;
 
@@ -45,7 +44,7 @@ class HyperLogLogPresto {
   /** @brief Returns overflow bucket of a specific given index. */
   auto GetOverflowBucketofIndex(uint16_t idx) { return overflow_bucket_[idx]; }
 
-  /** @brief Retusn the cardinality of the set. */
+  /** @brief Return the cardinality of the set. */
   auto GetCardinality() const -> uint64_t { return cardinality_; }
 
   /** @brief Element is added for HLL calculation. */
@@ -82,7 +81,45 @@ class HyperLogLogPresto {
   /** @brief Storing cardinality value */
   uint64_t cardinality_;
 
+  int16_t n_bits_;
   // TODO(student) - can add more data structures as required
+  std::mutex mutex_;
+  bool elements_exits;
+
+  auto GetBucketIndex(const std::bitset<64> &bset) -> int {
+    // int index = 0;
+    // if (n_bits_ == 0) {
+    //   return 1;
+    // }
+    // // n=4 63 62 61 60
+    // for (int i=63; i>=(64-n_bits_); i--) {
+    //   index = index << 1;
+    //   if (bset.test(i)) {
+    //     index++;
+    //   }
+    // }
+    // return index;
+    if (n_bits_ == 0) {
+      return 0;
+    }
+    const uint64_t ull = bset.to_ullong();
+    int ans =  ull >> (64 - n_bits_);
+    return ans;
+  }
+
+
+
+  auto GetContiguousZeroesFromRight(const std::bitset<64> &bset) {
+    int zeroes = 0;
+    for (int i=0;i<=(63-n_bits_);i++) {
+      if (bset.test(i)) {
+        break;
+      }
+      zeroes++;
+    }
+    return std::bitset<7>(zeroes);
+  }
+
 };
 
 }  // namespace bustub

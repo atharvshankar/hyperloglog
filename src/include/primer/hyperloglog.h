@@ -33,6 +33,7 @@ class HyperLogLog {
    */
   auto GetCardinality() { return cardinality_; }
 
+
   /**
    * @brief Adds a value into the HyperLogLog.
    *
@@ -83,6 +84,19 @@ class HyperLogLog {
   size_t cardinality_;
 
   /** @todo (student) can add their data structures that support HyperLogLog */
+  std::mutex mtx_;
+  int16_t n_bits_;
+  std::vector<uint32_t> buckets_;
+  bool elementsExist;
+
+  auto GetBucketIndex(const std::bitset<BITSET_CAPACITY> &bset) const -> uint32_t {
+    if (n_bits_ == 0) {
+      return 1;
+    }
+    const uint64_t ull = bset.to_ullong();
+    uint32_t ans =  ull >> (BITSET_CAPACITY - n_bits_);
+    return ans+1;
+  }
 };
 
 }  // namespace bustub
